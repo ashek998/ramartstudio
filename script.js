@@ -76,7 +76,7 @@ if (siteAudio) {
   siteAudio.volume = 0.6;
   let userAllowedAudio = false;
 
-  const pageCanPlayAudio = () => !document.hidden && document.hasFocus();
+  const pageCanPlayAudio = () => !document.hidden;
 
   const pauseSiteAudio = () => {
     siteAudio.pause();
@@ -85,13 +85,20 @@ if (siteAudio) {
   const playSiteAudio = () => {
     if (!pageCanPlayAudio()) {
       pauseSiteAudio();
-      return;
+      return Promise.resolve(false);
     }
 
-    siteAudio.play().catch(() => {
-      document.addEventListener("pointerdown", playSiteAudio, { once: true });
-      document.addEventListener("keydown", playSiteAudio, { once: true });
-    });
+    return siteAudio
+      .play()
+      .then(() => {
+        userAllowedAudio = true;
+        return true;
+      })
+      .catch(() => {
+        document.addEventListener("pointerdown", unlockAndPlayAudio, { once: true });
+        document.addEventListener("keydown", unlockAndPlayAudio, { once: true });
+        return false;
+      });
   };
 
   const unlockAndPlayAudio = () => {
@@ -108,6 +115,7 @@ if (siteAudio) {
     pauseSiteAudio();
   };
 
+  document.addEventListener("DOMContentLoaded", playSiteAudio, { once: true });
   window.addEventListener("load", playSiteAudio, { once: true });
   document.addEventListener("pointerdown", unlockAndPlayAudio, { once: true });
   document.addEventListener("keydown", unlockAndPlayAudio, { once: true });
