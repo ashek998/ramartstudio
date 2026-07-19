@@ -74,13 +74,46 @@ document.addEventListener("keydown", (event) => {
 
 if (siteAudio) {
   siteAudio.volume = 0.6;
+  let userAllowedAudio = false;
+
+  const pageCanPlayAudio = () => !document.hidden && document.hasFocus();
+
+  const pauseSiteAudio = () => {
+    siteAudio.pause();
+  };
 
   const playSiteAudio = () => {
+    if (!pageCanPlayAudio()) {
+      pauseSiteAudio();
+      return;
+    }
+
     siteAudio.play().catch(() => {
       document.addEventListener("pointerdown", playSiteAudio, { once: true });
       document.addEventListener("keydown", playSiteAudio, { once: true });
     });
   };
 
+  const unlockAndPlayAudio = () => {
+    userAllowedAudio = true;
+    playSiteAudio();
+  };
+
+  const syncSiteAudio = () => {
+    if (pageCanPlayAudio() && userAllowedAudio) {
+      playSiteAudio();
+      return;
+    }
+
+    pauseSiteAudio();
+  };
+
   window.addEventListener("load", playSiteAudio, { once: true });
+  document.addEventListener("pointerdown", unlockAndPlayAudio, { once: true });
+  document.addEventListener("keydown", unlockAndPlayAudio, { once: true });
+  document.addEventListener("visibilitychange", syncSiteAudio);
+  window.addEventListener("focus", syncSiteAudio);
+  window.addEventListener("blur", pauseSiteAudio);
+  window.addEventListener("pagehide", pauseSiteAudio);
+  window.addEventListener("pageshow", syncSiteAudio);
 }

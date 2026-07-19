@@ -16,7 +16,7 @@
       content="Premium handcrafted sculptures, idols, moulding works, fibreglass art, and public-space installations."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/hero-studio.jpg" />
+    <meta property="og:image" content="assets/hero-studio-v2.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,7 +49,10 @@
 
     <main>
       <section class="hero" id="home">
-        <img class="hero-image" src="assets/hero-studio.jpg" alt="Large handcrafted clay sculpture inside an art studio" />
+        <picture class="hero-media">
+          <source media="(max-width: 700px)" srcset="assets/hero-studio-portrait.jpg" />
+          <img class="hero-image" src="assets/hero-studio-v2.jpg" alt="Large handcrafted Shri Ram idol inside RAM Art Studio" />
+        </picture>
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
           <p class="eyebrow">Clay. Mould. Fibreglass. Installation.</p>
@@ -119,35 +122,35 @@
           <h2>Selected studio directions</h2>
         </div>
         <div class="gallery">
-          <button class="gallery-item reveal" data-title="Clay Idol Sculpture" data-src="assets/clay-idol.jpg">
+          <button class="gallery-item portrait face-low reveal" data-title="Clay Idol Sculpture" data-src="assets/clay-idol.jpg">
             <img src="assets/clay-idol.jpg" alt="Finished clay idol sculpture" loading="lazy" />
             <span>Clay idol sculpture</span>
           </button>
-          <button class="gallery-item reveal" data-title="Shri Ram Idol" data-src="assets/shri-ram-idol.jpg">
+          <button class="gallery-item portrait face-center reveal" data-title="Shri Ram Idol" data-src="assets/shri-ram-idol.jpg">
             <img src="assets/shri-ram-idol.jpg" alt="Large Shri Ram idol sculpture" loading="lazy" />
             <span>Shri Ram idol</span>
           </button>
-          <button class="gallery-item large reveal" data-title="Fibreglass Public Art" data-src="assets/fibreglass-installation.jpg">
+          <button class="gallery-item square reveal" data-title="Fibreglass Public Art" data-src="assets/fibreglass-installation.jpg">
             <img src="assets/fibreglass-installation.jpg" alt="Fibreglass public art installation in progress" loading="lazy" />
             <span>Fibreglass public art</span>
           </button>
-          <button class="gallery-item reveal" data-title="Krishna Statue" data-src="assets/krishna-statue.jpg">
+          <button class="gallery-item portrait face-high reveal" data-title="Krishna Statue" data-src="assets/krishna-statue.jpg">
             <img src="assets/krishna-statue.jpg" alt="Large Krishna statue with flute" loading="lazy" />
             <span>Krishna statue</span>
           </button>
-          <button class="gallery-item reveal" data-title="Hanuman Statue" data-src="assets/hanuman-statue.jpg">
+          <button class="gallery-item portrait face-high reveal" data-title="Hanuman Statue" data-src="assets/hanuman-statue.jpg">
             <img src="assets/hanuman-statue.jpg" alt="Large Hanuman statue with mace" loading="lazy" />
             <span>Hanuman statue</span>
           </button>
-          <button class="gallery-item reveal" data-title="Decorative Installation" data-src="assets/decorative-installation.jpg">
+          <button class="gallery-item square reveal" data-title="Decorative Installation" data-src="assets/decorative-installation.jpg">
             <img src="assets/decorative-installation.jpg" alt="Decorative sculptural art installation" loading="lazy" />
             <span>Decorative installation</span>
           </button>
-          <button class="gallery-item wide reveal" data-title="Studio Sculpture Work" data-src="assets/hero-studio.jpg">
-            <img src="assets/hero-studio.jpg" alt="Large clay sculpture work inside studio" loading="lazy" />
+          <button class="gallery-item portrait face-high reveal" data-title="Studio Sculpture Work" data-src="assets/hero-studio-portrait.jpg">
+            <img src="assets/hero-studio-portrait.jpg" alt="Portrait of a large handcrafted Shri Ram idol inside studio" loading="lazy" />
             <span>Studio sculpture work</span>
           </button>
-          <button class="gallery-item wide reveal" data-title="3D Ramayana Installation" data-src="assets/ramayana-installation.jpg">
+          <button class="gallery-item square face-center reveal" data-title="3D Ramayana Installation" data-src="assets/ramayana-installation.jpg">
             <img src="assets/ramayana-installation.jpg" alt="Large 3D Ramayana devotional sculpture installation" loading="lazy" />
             <span>3D devotional installation</span>
           </button>
